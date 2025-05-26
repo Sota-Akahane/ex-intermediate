@@ -42,7 +42,7 @@ public class ClotheRepository {
      * @param color  色
      * @return 条件に合致する衣類
      */
-    public List<Clothe> searchByColorAndGender(Integer gender, String color) {
+    public List<Clothe> findByColorAndGender(Integer gender, String color) {
         String sql
                 = "SELECT id, genre, gender, color, size, price FROM clothes " +
                 "WHERE " +

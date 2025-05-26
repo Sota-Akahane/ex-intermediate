@@ -27,6 +27,6 @@ public class ClotheService {
      * @return 条件に合致する衣類
      */
     public List<Clothe> searchByColorAndGender(Integer gender, String color) {
-        return clotheRepository.searchByColorAndGender(gender, color);
+        return clotheRepository.findByColorAndGender(gender, color);
     }
 }
