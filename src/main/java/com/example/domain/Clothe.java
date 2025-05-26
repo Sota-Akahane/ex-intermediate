@@ -6,10 +6,34 @@ package com.example.domain;
  * @author sota.akahane
  */
 public class Clothe {
+    /** ID */
+    private Integer id;
+    /** ジャンル */
+    private String genre;
     /** 性別 */
     private Integer gender;
     /** 色 */
     private String color;
+    /** 価格 */
+    private Integer price;
+    /** サイズ */
+    private String size;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
     public Integer getGender() {
         return gender;
@@ -27,11 +51,31 @@ public class Clothe {
         this.color = color;
     }
 
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
     @Override
     public String toString() {
-        return "Clothing{" +
-                "gender='" + gender + '\'' +
+        return "Clothe{" +
+                "id=" + id +
+                ", genre='" + genre + '\'' +
+                ", gender=" + gender +
                 ", color='" + color + '\'' +
+                ", price=" + price +
+                ", size='" + size + '\'' +
                 '}';
     }
 }
