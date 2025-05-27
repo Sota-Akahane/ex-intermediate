@@ -13,28 +13,31 @@
       th:object="${clotheForm}"
     >
       <div th:errors="*{gender}" style="color: red">error</div>
-      <input
-        type="radio"
-        name="gender"
-        id="man"
-        value="0"
-        checked
-        th:field="*{gender}"
-      />Man
+
+      <div th:each="gender : ${genderMap}">
+        <label th:for="gender + ${gender.key}">
+          <input
+            type="radio"
+            name="gender"
+            th:id="gender + ${gender.key}"
+            th:text="${gender.value}"
+            th:value="${gender.key}"
+            th:field="*{gender}"
+          />
+        </label>
+      </div>
+
       <div th:errors="*{color}" style="color: red">error</div>
       <select name="color" id="color" th:field="*{color}">
-        <option value="赤">赤</option>
-        <option value="青">青</option>
-        <option value="白">白</option>
-        <option value="黄">黄</option></select
+        <option value="">---</option>
+        <option
+          th:each="color : ${colorMap}"
+          th:text="${color.value}"
+          th:value="${color.value}"
+        >
+          color
+        </option></select
       ><br />
-      <input
-        type="radio"
-        name="gender"
-        id="woman"
-        value="1"
-        th:field="*{gender}"
-      />Woman <br />
       <button>検索</button><br />
     </form>
     <div>

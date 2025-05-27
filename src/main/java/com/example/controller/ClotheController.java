@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 衣類検索機能関連の処理を行うコントローラクラス.
@@ -26,7 +28,22 @@ public class ClotheController {
     private ClotheService clotheService;
 
     @GetMapping("/toSearch")
-    public String toSearch(ClotheForm form) {
+    public String toSearch(ClotheForm form, Model model) {
+        // 性別のラジオボタンを実装するためのMapを準備
+        Map<Integer, String> genderMap = new LinkedHashMap<>();
+        genderMap.put(0, "Man");
+        genderMap.put(1, "Woman");
+
+        // 色のセレクトボックスを実装するためのMapを準備
+        Map<Integer, String> colorMap = new LinkedHashMap<>();
+        colorMap.put(0, "赤");
+        colorMap.put(1, "青");
+        colorMap.put(2, "白");
+        colorMap.put(3, "黄");
+
+        model.addAttribute("genderMap", genderMap);
+        model.addAttribute("colorMap", colorMap);
+
         return "clothe-search";
     }
 
@@ -36,7 +53,7 @@ public class ClotheController {
                          Model model) {
 
         if (result.hasErrors()) {
-            return toSearch(form);
+            return toSearch(form, model);
         }
 
         Integer genderCode = Integer.parseInt(form.getGender());
@@ -50,6 +67,6 @@ public class ClotheController {
 
         model.addAttribute("clotheList", clotheList);
 
-        return "clothe-search";
+        return toSearch(form, model);
     }
 }
