@@ -69,4 +69,10 @@ public class ClotheController {
 
         return toSearch(form, model);
     }
+
+    @GetMapping("/exception")
+    public String exception() {
+        System.out.println(10 / 0);
+        return null;
+    }
 }
